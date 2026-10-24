@@ -57,3 +57,12 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 .subpage-footer-cta .button{white-space:nowrap}
 @media(max-width:1100px){.subpage-main{margin-left:7.5%;margin-right:7.5%}}
 @media(max-width:700px){.subpage-main{margin:0;padding:22px 5% 38px}.subpage-hero{grid-template-columns:1fr;padding:22px;gap:14px}.subpage-hero h1{font-size:34px}.subpage-art{min-height:110px}.subpage-grid{grid-template-columns:1fr 1fr;gap:8px}.subpage-card{padding:13px}.subpage-heading{font-size:23px}.subpage-footer-cta{align-items:flex-start;flex-direction:column;padding:20px}}
+
+/* Faixa animada contínua compartilhada em todas as páginas */
+.announcement-bar{width:100%;height:32px;overflow:hidden;display:flex;align-items:center;background:linear-gradient(100deg,#c82ac3 0%,#ef55a7 58%,#ff9c69 100%);color:#fff;position:relative;isolation:isolate}
+.announcement-track{display:flex;align-items:center;gap:42px;width:max-content;min-width:max-content;white-space:nowrap;animation:hellix-marquee 28s linear infinite;font-size:9px;font-weight:700;letter-spacing:1.35px}
+.announcement-track span{display:inline-flex;align-items:center;gap:42px}
+.announcement-track span::after{content:'✦';font-size:8px;color:#ffe5f4}
+.announcement-bar:hover .announcement-track{animation-play-state:paused}
+@keyframes hellix-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.announcement-track{animation:none;justify-content:center;width:100%;white-space:normal}.announcement-track span:nth-child(n+5){display:none}.announcement-track{gap:12px;font-size:8px}}
