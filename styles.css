@@ -21,3 +21,39 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 .search-panel{display:none}.age-overlay{display:none!important}.cart-drawer{z-index:51}.drawer-footer .button{font-size:10px}
 @media(max-width:1100px){.hero,.section,.benefits,.why-section,.final-cta,.age-notice{margin-left:7.5%;margin-right:7.5%}.hero,.section{padding-left:0;padding-right:0}.site-header{padding-left:7.5%;padding-right:7.5%}.site-footer{padding-left:7.5%;padding-right:7.5%}}
 @media(max-width:700px){.site-header{height:58px;padding:0 5%}.desktop-nav{display:none;position:absolute;top:58px;left:0;right:0;background:#f0f1f3;padding:16px 5%;flex-direction:column;gap:18px;z-index:30}.menu-toggle{display:block;font-size:20px}.hero{margin:0;padding:24px 5% 28px;grid-template-columns:1fr;gap:24px}.hero h1{font-size:48px}.hero-art{height:230px}.benefits{margin:0 5%;grid-template-columns:1fr;gap:8px}.benefit-card{min-height:61px;padding:11px 14px}.section{margin:0;padding:34px 5% 15px}.section-heading h2{font-size:25px}.product-grid{gap:8px}.product-art{height:125px}.product-info h3{font-size:9px}.category-grid{grid-template-columns:1fr 1fr;gap:7px}.category-card.category-pink{grid-row:span 2;min-height:145px}.category-card{padding:9px;min-height:62px}.category-card strong{font-size:8px}.category-card small{font-size:7px}.why-section{margin:24px 5% 0;padding:23px 12px}.why-section h2{font-size:20px}.why-grid{grid-template-columns:repeat(2,1fr);gap:20px 8px}.reviews-section{padding-top:35px}.review-grid{grid-template-columns:1fr;gap:8px}.review-grid article{padding:12px}.faq-section{padding-top:35px}.faq-list details{padding:13px 14px}.final-cta{margin:18px 5% 20px;padding:26px 14px}.final-cta h2{font-size:27px}.age-notice{margin:0 5% 10px}.site-footer{padding:23px 5% 15px;grid-template-columns:1fr auto;gap:14px}.site-footer nav{grid-column:1/-1;grid-row:2;flex-wrap:wrap}.social-links{grid-column:2;grid-row:1}.site-footer>small{grid-column:1/-1}.footer-brand{font-size:12px}}
+
+
+/* Subpáginas Hellix.co: mesma identidade visual da página inicial */
+.subpage-main{max-width:1080px;margin:0 auto;padding:32px 0 56px}
+.breadcrumb{font-size:10px;color:#85828c;margin:0 0 16px}
+.breadcrumb a{color:#c52ca3}
+.subpage-hero{border-radius:24px;background:linear-gradient(115deg,#fff 0%,#fff 50%,#f8e2ef 100%);padding:30px 34px;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center;border:1px solid #e9e5ec;box-shadow:0 10px 25px #25212a08}
+.subpage-hero h1{font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,48px);letter-spacing:-2px;line-height:1.05;margin:8px 0 12px}
+.subpage-hero h1 span,.subpage-heading span{background:linear-gradient(100deg,#c82ac3,#f05ba7 65%,#ff9c69);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subpage-hero p{font-size:12px;color:#85828c;line-height:1.8;max-width:520px}
+.subpage-art{min-height:160px;border-radius:20px;background:radial-gradient(ellipse at 40% 40%,#f4bfdf,transparent 55%),linear-gradient(135deg,#dedee3,#f4e5ef 58%,#ffd6b8);display:grid;place-items:center;font-size:64px;color:#fff;text-shadow:0 7px 20px #a13e9b40}
+.subpage-heading{font-family:Manrope,sans-serif;font-size:26px;letter-spacing:-1.3px;margin:34px 0 16px}
+.subpage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.subpage-card{background:#fff;border:1px solid #e9e5ec;border-radius:18px;padding:17px;box-shadow:0 8px 20px #25212a08}
+.subpage-card h2,.subpage-card h3{font-size:13px;margin:0 0 8px}
+.subpage-card p{font-size:10px;color:#85828c;line-height:1.7;margin:0 0 13px}
+.subpage-card a{font-size:10px;font-weight:700;color:#c52ca3}
+.subpage-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#f4d4ea,#ffe0c7);font-size:18px;margin-bottom:13px}
+.subpage-list{display:grid;gap:9px}
+.subpage-row{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border:1px solid #e9e5ec;border-radius:14px;padding:15px 17px;font-size:11px}
+.subpage-row small{display:block;color:#85828c;font-size:9px;margin-top:5px}
+.subpage-note{margin-top:18px;padding:13px 15px;border:1px solid #efc5df;background:#fff8fc;border-radius:14px;color:#8b5378;font-size:10px;line-height:1.7}
+.subpage-form{max-width:650px;display:grid;gap:12px;background:#fff;padding:22px;border:1px solid #e9e5ec;border-radius:20px}
+.subpage-form label{display:grid;gap:6px;font-size:10px;font-weight:700}
+.subpage-form input,.subpage-form textarea,.subpage-form select{border:1px solid #e6e1e9;border-radius:10px;padding:11px;font:inherit;font-size:11px;background:#fff}
+.subpage-form textarea{min-height:110px;resize:vertical}
+.subpage-faq{max-width:760px;display:grid;gap:8px}
+.subpage-faq details{background:#fff;border:1px solid #e9e5ec;border-radius:14px;padding:14px 16px}
+.subpage-faq summary{font-size:11px;font-weight:700;cursor:pointer}
+.subpage-faq p{font-size:10px;line-height:1.7;color:#85828c}
+.subpage-footer-cta{margin-top:26px;padding:24px;border-radius:22px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #e9e5ec}
+.subpage-footer-cta h2{font-family:Manrope,sans-serif;font-size:22px;letter-spacing:-1px;margin:0 0 6px}
+.subpage-footer-cta p{font-size:10px;color:#85828c;margin:0}
+.subpage-footer-cta .button{white-space:nowrap}
+@media(max-width:1100px){.subpage-main{margin-left:7.5%;margin-right:7.5%}}
+@media(max-width:700px){.subpage-main{margin:0;padding:22px 5% 38px}.subpage-hero{grid-template-columns:1fr;padding:22px;gap:14px}.subpage-hero h1{font-size:34px}.subpage-art{min-height:110px}.subpage-grid{grid-template-columns:1fr 1fr;gap:8px}.subpage-card{padding:13px}.subpage-heading{font-size:23px}.subpage-footer-cta{align-items:flex-start;flex-direction:column;padding:20px}}
