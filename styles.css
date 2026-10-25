@@ -1591,3 +1591,39 @@ input[type="submit"]:focus-visible,
     font-size:14px !important;
   }
 }
+
+
+/* Botão Loja do topo: restaura o formato original, usando o degradê oficial Hellix */
+header .cart-button,
+.site-header .cart-button,
+nav .cart-button,
+a.cart-button {
+  min-height:initial !important;
+  padding:10px 16px !important;
+  gap:8px !important;
+  border:1px solid rgba(214,42,193,.22) !important;
+  border-radius:999px !important;
+  background:linear-gradient(110deg,#c52ac5 0%,#e653b0 55%,#ff9c69 100%) !important;
+  color:#fff !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  line-height:1.2 !important;
+  box-shadow:0 7px 20px rgba(197,42,197,.20),0 12px 28px rgba(239,170,123,.13) !important;
+}
+header .cart-button:hover,
+.site-header .cart-button:hover,
+nav .cart-button:hover,
+a.cart-button:hover {
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+}
+@media(max-width:700px) {
+  header .cart-button,
+  .site-header .cart-button,
+  nav .cart-button,
+  a.cart-button {
+    min-height:initial !important;
+    padding:8px 12px !important;
+    font-size:12px !important;
+  }
+}
