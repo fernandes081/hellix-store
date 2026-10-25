@@ -752,3 +752,8 @@ section[aria-label="Vantagens Hellix.co"] {
     animation: none;
   }
 }
+
+/* Remove os cards de vantagens que aparecem logo abaixo do banner inicial */
+section.institutional-benefits {
+  display: none !important;
+}
