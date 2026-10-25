@@ -48,7 +48,7 @@ export default function HomePage() {
       <div className="hero-glow pointer-events-none absolute inset-x-0 top-0 h-[850px]" />
       <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-12">
         <a href="#inicio" className="flex items-center gap-3" aria-label="Hellix início">
-          <span className="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/[0.07] text-xl text-hellix-pink">✦</span>
+          <img src="/generated.jpeg" alt="Hellix .co" className="h-10 w-10 rounded-2xl object-contain" />
           <span><span className="block text-lg font-semibold tracking-tight">hellix<span className="text-hellix-pink">.</span>co</span><span className="block text-[9px] tracking-[.28em] text-white/45">MEDICAL WELLNESS</span></span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-white/60 md:flex">
