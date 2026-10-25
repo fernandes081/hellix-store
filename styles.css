@@ -406,3 +406,9 @@ html,body{
 }
 .pdf-hero .caixa-destaque::before{top:-5px;left:-5px}
 .pdf-hero .caixa-destaque::after{bottom:-5px;right:-5px}
+
+
+/* Ajuste final da faixa de destaque na hero: sem cortes */
+.pdf-hero h1{overflow:visible;line-height:1.08!important}
+.pdf-hero h1 .caixa-destaque{overflow:visible;line-height:1.08!important;vertical-align:baseline;margin:3px 0 7px}
+.pdf-hero h1 .caixa-destaque .texto-gradiente{color:#111!important;background:transparent!important;background-image:none!important;-webkit-text-fill-color:#111!important;-webkit-background-clip:border-box!important;background-clip:border-box!important}
