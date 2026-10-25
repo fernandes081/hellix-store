@@ -119,3 +119,28 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 @keyframes hellix-band-two{from{margin-left:1.2%}to{margin-left:-1.2%}}
 @media(max-width:700px){.crossed-ticker{height:64px;margin-bottom:10px}.crossed-ticker .ticker-band{height:30px;left:-14%;width:128%}.crossed-ticker .ticker-band-one{top:14px;transform:rotate(-4deg)}.crossed-ticker .ticker-band-two{top:34px;transform:rotate(4deg)}.crossed-ticker .announcement-track{font-size:8px;letter-spacing:1px}.crossed-ticker .announcement-group,.crossed-ticker .announcement-group span{gap:22px}.crossed-ticker .announcement-group{padding-right:22px}}
 @media(prefers-reduced-motion:reduce){.crossed-ticker .ticker-band-one,.crossed-ticker .ticker-band-two{animation:none}.crossed-ticker .announcement-track{animation:none}}
+
+
+/* Corrige o espaço entre as faixas diagonais e os três cards de benefícios */
+.crossed-ticker{
+  height:118px;
+  margin-bottom:20px;
+  z-index:2;
+}
+.institutional-benefits{
+  position:relative;
+  z-index:1;
+  margin-top:0;
+  margin-bottom:28px;
+  padding:24px 28px;
+}
+@media(max-width:700px){
+  .crossed-ticker{
+    height:100px;
+    margin-bottom:16px;
+  }
+  .institutional-benefits{
+    padding:20px 17px;
+    margin-bottom:22px;
+  }
+}
