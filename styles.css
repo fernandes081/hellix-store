@@ -695,3 +695,10 @@ section.institutional-story .story-grid > article::before {
     transition: none !important;
   }
 }
+
+
+/* Oculta explicitamente os três cards do topo: entrega, originalidade e Pix */
+.pdf-hero-benefits,
+section[aria-label="Vantagens Hellix.co"] {
+  display: none !important;
+}
