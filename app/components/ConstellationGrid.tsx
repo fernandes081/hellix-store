@@ -170,19 +170,21 @@ export default function ConstellationGrid() {
     function visibility() { if (document.hidden) stop(); else start(); }
     function dispose() {
       disposed = true; stop(); resizeObserver.disconnect(); intersectionObserver.disconnect();
-      host.removeEventListener("pointermove", move); host.removeEventListener("pointerdown", move);
-      host.removeEventListener("pointerleave", leave); host.removeEventListener("pointercancel", leave);
-      host.removeEventListener("pointerup", release);
+      const eventTarget = host.parentElement || host;
+      eventTarget.removeEventListener("pointermove", move as EventListener); eventTarget.removeEventListener("pointerdown", move as EventListener);
+      eventTarget.removeEventListener("pointerleave", leave); eventTarget.removeEventListener("pointercancel", leave);
+      eventTarget.removeEventListener("pointerup", release as EventListener);
       document.removeEventListener("visibilitychange", visibility);
       document.removeEventListener("scroll", leave, true);
       reduced.removeEventListener("change", preference);
     }
 
-    host.addEventListener("pointermove", move, { passive: true });
-    host.addEventListener("pointerdown", move, { passive: true });
-    host.addEventListener("pointerleave", leave);
-    host.addEventListener("pointercancel", leave);
-    host.addEventListener("pointerup", release);
+    const eventTarget = host.parentElement || host;
+    eventTarget.addEventListener("pointermove", move as EventListener, { passive: true });
+    eventTarget.addEventListener("pointerdown", move as EventListener, { passive: true });
+    eventTarget.addEventListener("pointerleave", leave);
+    eventTarget.addEventListener("pointercancel", leave);
+    eventTarget.addEventListener("pointerup", release as EventListener);
     document.addEventListener("visibilitychange", visibility);
     document.addEventListener("scroll", leave, { passive: true, capture: true });
     reduced.addEventListener("change", preference);
