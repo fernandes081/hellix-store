@@ -1486,3 +1486,20 @@ section.institutional-benefits {
 .hero.pdf-hero + .benefits.institutional-benefits {
   background-image:none !important;
 }
+
+
+/* Correção de fundo global: branco contínuo em toda a página, sem bloco isolado */
+html,
+body,
+#app,
+main,
+.site-wrapper,
+.page-wrapper {
+  background-color:#fff !important;
+  background-image:none !important;
+}
+.hero.pdf-hero,
+.hero.pdf-hero + .benefits.institutional-benefits {
+  background-color:transparent !important;
+  background-image:none !important;
+}
