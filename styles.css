@@ -106,8 +106,8 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 
 
 /* Duas faixas animadas cruzadas, sobrepostas, logo abaixo do hero */
-.crossed-ticker{height:88px;position:relative;overflow:hidden;isolation:isolate;margin:0;width:100%;background:#f8f5f9}
-.crossed-ticker .ticker-band{position:absolute;left:-4%;width:108%;height:35px;display:flex;align-items:center;overflow:hidden;box-shadow:0 5px 16px #211e2718}
+.crossed-ticker{height:72px;position:relative;overflow:visible;isolation:isolate;z-index:5;margin:0 0 12px;width:100%;background:transparent;pointer-events:none}
+.crossed-ticker .ticker-band{position:absolute;left:-8%;width:116%;height:35px;display:flex;align-items:center;overflow:hidden;box-shadow:0 5px 16px #211e2718;pointer-events:auto}
 .crossed-ticker .ticker-band-one{top:17px;z-index:2;transform:rotate(-2.8deg);background:linear-gradient(105deg,#d42ac1,#9d81d8 54%,#efaa7b);animation:hellix-band-one 9s ease-in-out infinite alternate}
 .crossed-ticker .ticker-band-two{top:39px;z-index:1;transform:rotate(2.8deg);background:linear-gradient(105deg,#efaa7b,#d42ac1 52%,#9d81d8);animation:hellix-band-two 10s ease-in-out infinite alternate}
 .crossed-ticker .announcement-track{font-size:9px;letter-spacing:1.5px;animation-duration:24s}
@@ -117,5 +117,5 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 .crossed-ticker .ticker-band:hover .announcement-track{animation-play-state:paused}
 @keyframes hellix-band-one{from{margin-left:-1.2%}to{margin-left:1.2%}}
 @keyframes hellix-band-two{from{margin-left:1.2%}to{margin-left:-1.2%}}
-@media(max-width:700px){.crossed-ticker{height:76px}.crossed-ticker .ticker-band{height:30px;left:-10%;width:120%}.crossed-ticker .ticker-band-one{top:14px;transform:rotate(-4deg)}.crossed-ticker .ticker-band-two{top:34px;transform:rotate(4deg)}.crossed-ticker .announcement-track{font-size:8px;letter-spacing:1px}.crossed-ticker .announcement-group,.crossed-ticker .announcement-group span{gap:22px}.crossed-ticker .announcement-group{padding-right:22px}}
+@media(max-width:700px){.crossed-ticker{height:64px;margin-bottom:10px}.crossed-ticker .ticker-band{height:30px;left:-14%;width:128%}.crossed-ticker .ticker-band-one{top:14px;transform:rotate(-4deg)}.crossed-ticker .ticker-band-two{top:34px;transform:rotate(4deg)}.crossed-ticker .announcement-track{font-size:8px;letter-spacing:1px}.crossed-ticker .announcement-group,.crossed-ticker .announcement-group span{gap:22px}.crossed-ticker .announcement-group{padding-right:22px}}
 @media(prefers-reduced-motion:reduce){.crossed-ticker .ticker-band-one,.crossed-ticker .ticker-band-two{animation:none}.crossed-ticker .announcement-track{animation:none}}
