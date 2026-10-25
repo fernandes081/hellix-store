@@ -362,3 +362,47 @@ html,body{
   .pdf-hero-actions{gap:8px}
 }
 @media(prefers-reduced-motion:reduce){.pdf-hero-actions .button{transition:none}}
+
+
+/* Destaque roxo solicitado para o texto da hero */
+:root{
+  --realce-fundo:rgba(156,78,255,.20);
+  --espaco-horizontal:10px;
+  --espaco-vertical:2px;
+  --espessura-bordas:1px;
+  --cor-bordas:#8B3DFF;
+  --gradiente-texto:linear-gradient(90deg,#9C4EFF 0%,#B366FF 100%);
+  --tamanho-marcadores:9px;
+  --cor-marcadores:#7A29CC;
+}
+.pdf-hero .caixa-destaque{
+  background:var(--realce-fundo);
+  padding:var(--espaco-vertical) var(--espaco-horizontal);
+  position:relative;
+  border-left:var(--espessura-bordas) solid var(--cor-bordas);
+  border-right:var(--espessura-bordas) solid var(--cor-bordas);
+  display:inline-block;
+  border-radius:3px;
+  vertical-align:baseline;
+}
+.pdf-hero .texto-gradiente{
+  background:var(--gradiente-texto);
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+  font-weight:bold;
+}
+.pdf-hero .caixa-destaque::before,
+.pdf-hero .caixa-destaque::after{
+  content:'';
+  position:absolute;
+  width:var(--tamanho-marcadores);
+  height:var(--tamanho-marcadores);
+  border-radius:50%;
+  background-color:var(--cor-marcadores);
+  pointer-events:none;
+}
+.pdf-hero .caixa-destaque::before{top:-5px;left:-5px}
+.pdf-hero .caixa-destaque::after{bottom:-5px;right:-5px}
