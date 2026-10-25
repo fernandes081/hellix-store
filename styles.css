@@ -702,3 +702,15 @@ section.institutional-story .story-grid > article::before {
 section[aria-label="Vantagens Hellix.co"] {
   display: none !important;
 }
+
+
+/* Centraliza o título da seção "Antes de explorar" */
+.faq-section > .section-heading {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.faq-section > .section-heading h2 {
+  width: 100%;
+  text-align: center;
+}
