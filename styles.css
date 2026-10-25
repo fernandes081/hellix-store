@@ -1185,3 +1185,86 @@ section.institutional-benefits {
   .crossed-ticker .ticker-band-one { top:25px !important; transform:rotate(-3deg) scale(1.15) !important; }
   .crossed-ticker .ticker-band-two { top:43px !important; transform:rotate(5deg) scale(1.15) !important; }
 }
+
+
+/* HOTFIX: wrapper transparente; faixas cruzadas livres e sem container visível */
+.crossed-ticker {
+  display:block !important;
+  position:relative !important;
+  isolation:isolate !important;
+  width:100% !important;
+  max-width:none !important;
+  height:116px !important;
+  margin:0 0 24px !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.crossed-ticker .ticker-band {
+  display:flex !important;
+  position:absolute !important;
+  left:-12% !important;
+  width:124% !important;
+  height:40px !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:#17151b !important;
+  color:#fff !important;
+  box-shadow:0 5px 24px rgba(0,0,0,.42) !important;
+  animation:none !important;
+}
+.crossed-ticker .ticker-band-one {
+  top:24px !important;
+  z-index:3 !important;
+  transform:rotate(-3deg) !important;
+  transform-origin:center center !important;
+}
+.crossed-ticker .ticker-band-two {
+  display:flex !important;
+  top:47px !important;
+  z-index:2 !important;
+  transform:rotate(5deg) !important;
+  transform-origin:center center !important;
+}
+.crossed-ticker .announcement-track {
+  display:flex !important;
+  flex:0 0 auto !important;
+  width:max-content !important;
+  min-width:max-content !important;
+  white-space:nowrap !important;
+  animation:hellix-marquee 32s linear infinite !important;
+  will-change:transform !important;
+}
+.crossed-ticker .ticker-band-two .announcement-track {
+  animation:hellix-marquee 38s linear infinite reverse !important;
+}
+.crossed-ticker .announcement-group {
+  display:flex !important;
+  flex:0 0 auto !important;
+  align-items:center !important;
+  gap:28px !important;
+  padding-right:28px !important;
+  white-space:nowrap !important;
+}
+.crossed-ticker .announcement-group span {
+  display:inline-flex !important;
+  flex:0 0 auto !important;
+  align-items:center !important;
+  color:#fff !important;
+  white-space:nowrap !important;
+}
+@media(max-width:700px) {
+  .crossed-ticker { height:96px !important; margin-bottom:20px !important; }
+  .crossed-ticker .ticker-band { left:-18% !important; width:136% !important; height:34px !important; }
+  .crossed-ticker .ticker-band-one { top:23px !important; transform:rotate(-3deg) !important; }
+  .crossed-ticker .ticker-band-two { top:41px !important; transform:rotate(5deg) !important; }
+  .crossed-ticker .announcement-track { font-size:8px !important; }
+  .crossed-ticker .announcement-group { gap:18px !important; padding-right:18px !important; }
+}
