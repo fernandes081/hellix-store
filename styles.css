@@ -170,3 +170,63 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
   .institutional-benefits .benefit-card,
   .institutional-benefits .benefit-card .benefit-icon{transition:none}
 }
+
+
+/* Correção definitiva: impedir que as faixas diagonais criem rolagem horizontal */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+.crossed-ticker{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  contain:paint;
+}
+.crossed-ticker .ticker-band{
+  left:-3%;
+  width:106%;
+}
+@media(max-width:700px){
+  .crossed-ticker .ticker-band{
+    left:-3%;
+    width:106%;
+  }
+}
+
+/* Hover visível e confiável nos três cards de diferenciais */
+.institutional-benefits .benefit-card{
+  position:relative;
+  min-width:0;
+  border:1px solid transparent;
+  border-radius:14px;
+  padding:12px 10px;
+  background:transparent;
+  transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.institutional-benefits .benefit-card .benefit-icon{
+  flex:0 0 34px;
+  transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease;
+}
+.institutional-benefits .benefit-card strong,
+.institutional-benefits .benefit-card small{
+  overflow-wrap:anywhere;
+}
+@media (hover:hover){
+  .institutional-benefits .benefit-card:hover{
+    transform:translateY(-7px);
+    background:#fff;
+    border-color:#eee2f0;
+    box-shadow:0 14px 28px rgba(88,53,96,.13);
+  }
+  .institutional-benefits .benefit-card:hover .benefit-icon{
+    transform:scale(1.12) rotate(-8deg);
+    background:#efd7eb;
+    box-shadow:0 5px 14px rgba(162,108,170,.2);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .institutional-benefits .benefit-card,
+  .institutional-benefits .benefit-card .benefit-icon{transition:none}
+}
