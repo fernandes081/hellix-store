@@ -475,3 +475,56 @@ html,body{
 .pdf-hero h1{overflow:visible;line-height:1.08!important}
 .pdf-hero h1 .caixa-destaque{overflow:visible;line-height:1.08!important;vertical-align:baseline;margin:3px 0 7px}
 .pdf-hero h1 .caixa-destaque .texto-gradiente{color:#111!important;background:transparent!important;background-image:none!important;-webkit-text-fill-color:#111!important;-webkit-background-clip:border-box!important;background-clip:border-box!important}
+
+
+/* ESTADO FINAL: uma única faixa horizontal, sem diagonais ou sobreposição */
+.crossed-ticker{
+  display:block !important;
+  position:relative !important;
+  width:100% !important;
+  max-width:100% !important;
+  height:38px !important;
+  margin:0 0 24px !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  isolation:auto !important;
+  contain:none !important;
+  z-index:2 !important;
+  background:transparent !important;
+}
+.crossed-ticker .ticker-band{
+  display:flex !important;
+  position:relative !important;
+  inset:auto !important;
+  top:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  left:0 !important;
+  width:100% !important;
+  max-width:100% !important;
+  height:38px !important;
+  margin:0 !important;
+  transform:none !important;
+  animation:none !important;
+  overflow:hidden !important;
+  z-index:1 !important;
+  pointer-events:auto !important;
+}
+.crossed-ticker .ticker-band-one{
+  display:flex !important;
+  background:linear-gradient(105deg,#d42ac1,#9d81d8 54%,#efaa7b) !important;
+}
+.crossed-ticker .ticker-band-two{display:none !important}
+.crossed-ticker .announcement-track{
+  animation-duration:24s !important;
+}
+@media(max-width:700px){
+  .crossed-ticker{height:34px !important;margin-bottom:18px !important}
+  .crossed-ticker .ticker-band{height:34px !important;width:100% !important;left:0 !important}
+  .crossed-ticker .announcement-track{font-size:8px !important;letter-spacing:1px !important}
+  .crossed-ticker .announcement-group,.crossed-ticker .announcement-group span{gap:22px !important}
+  .crossed-ticker .announcement-group{padding-right:22px !important}
+}
+@media(prefers-reduced-motion:reduce){
+  .crossed-ticker .announcement-track{animation:none !important}
+}
