@@ -677,3 +677,21 @@ section.institutional-story .story-grid > article::before {
 @media (prefers-reduced-motion: reduce) {
   section.institutional-story .story-grid > article { transition: none !important; }
 }
+
+
+/* Animação simples ao passar o mouse nos cards de "Uma experiência" */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  section.institutional-story .story-grid > article {
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+  }
+  section.institutional-story .story-grid > article:hover {
+    transform: translateY(-7px) !important;
+    border-color: #d7a9df !important;
+    box-shadow: 0 14px 28px rgba(88, 53, 96, .14) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  section.institutional-story .story-grid > article {
+    transition: none !important;
+  }
+}
