@@ -307,3 +307,38 @@ html,body{
   .button-hellix-cta::before{animation:none}
   .button-hellix-cta,.hellix-cta-icon,.hellix-cta-label{transition:none}
 }
+
+
+/* Hero fiel à referência PDF Hellix.co */
+.pdf-hero{padding:34px 6.5% 32px;min-height:360px;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:7%;align-items:center}
+.pdf-hero-copy{padding:8px 0 12px}
+.pdf-hero-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid #fff;border-radius:30px;background:#ffffffb8;color:#77717f;font-size:9px;box-shadow:0 3px 12px #211e2707}
+.pdf-hero-pill span{color:#3985ed}
+.pdf-hero h1{margin:18px 0 14px;font-size:clamp(42px,5.1vw,68px);line-height:.91;letter-spacing:-3.5px;font-weight:800}
+.pdf-hero h1>span{background:linear-gradient(100deg,#d52ac1 0%,#e957a5 55%,#f19b67 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pdf-hero .pdf-orange-dot{color:#f19b67}
+.pdf-hero .hero-copy>p{margin:0;max-width:430px;font-size:11px;line-height:1.75;color:#77717f}
+.pdf-hero-actions{gap:9px;margin-top:19px;flex-wrap:wrap}
+.pdf-hero-actions .button{min-height:38px;padding:10px 15px;border-radius:24px;gap:12px;font-size:10px;font-weight:600}
+.pdf-button-primary{color:#fff;background:linear-gradient(110deg,#cf25c3,#e85ba8 58%,#f4a06a);box-shadow:0 8px 19px #d52ac12b}
+.pdf-whatsapp-button{min-height:38px!important;padding:7px 14px!important;gap:8px!important;border-radius:24px!important;background:#fff!important;color:#28242d!important;border:1px solid #efebf1!important;box-shadow:0 5px 14px #211e2708!important}
+.pdf-whatsapp-button .hellix-cta-icon{width:21px;height:21px;flex-basis:21px;background:linear-gradient(110deg,#d52ac1,#f19b67);color:white;font-size:11px}
+.pdf-whatsapp-button .hellix-cta-label{font-size:10px}
+.pdf-whatsapp-button::before{display:none}
+.pdf-whatsapp-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px #211e2712!important}
+.pdf-hero-product{min-width:0;display:flex;align-items:center;justify-content:center}
+.pdf-product-frame{position:relative;width:min(100%,390px);height:280px;border:6px solid #fff;border-radius:28px;overflow:visible;display:grid;place-items:center;background:radial-gradient(ellipse at 45% 48%,#f6d4e8 0,transparent 38%),radial-gradient(ellipse at 70% 64%,#f5c3b4 0,transparent 42%),radial-gradient(ellipse at 25% 25%,#fff 0,transparent 44%),linear-gradient(135deg,#e7e4e8,#f5e9f0 55%,#e7d9e9);box-shadow:0 16px 30px #30203b18,inset 0 0 0 1px #ffffffd9}
+.pdf-product-frame:before,.pdf-product-frame:after{content:"";position:absolute;pointer-events:none;border:1px solid #ffffff9c;border-radius:50%;width:180px;height:85px;transform:rotate(-32deg)}
+.pdf-product-frame:after{width:230px;height:110px;transform:rotate(42deg)}
+.pdf-product-glow{position:absolute;width:140px;height:170px;border-radius:50%;background:#f6a8d5;filter:blur(42px);opacity:.55}
+.pdf-vape-device{position:relative;z-index:1;height:240px;width:auto;filter:drop-shadow(0 13px 11px #4032462b);transform:rotate(-4deg)}
+.pdf-free-shipping{position:absolute;right:-9px;top:13px;z-index:3;border-radius:18px;padding:5px 9px;background:#08c9d5;color:white;font-size:8px;font-weight:700;box-shadow:0 4px 10px #08c9d533}
+.pdf-flavor-badge{position:absolute;left:-15px;bottom:-10px;z-index:3;border-radius:13px;background:#fff;padding:9px 12px;color:#d52ac1;font-size:12px;font-weight:800;box-shadow:0 8px 18px #211e2715}
+.pdf-hero-benefits{margin:0 6.5% 30px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pdf-hero-benefits article{display:flex;align-items:center;gap:12px;min-width:0;padding:16px 18px;border-radius:17px;background:#fff;border:1px solid #efebf1;box-shadow:0 9px 20px #211e2709}
+.pdf-benefit-icon{display:grid;place-items:center;flex:0 0 31px;height:31px;border-radius:50%;background:#287df0;color:white;font-size:15px;font-weight:700}
+.pdf-hero-benefits article div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.pdf-hero-benefits strong{font-size:10px;font-weight:700}
+.pdf-hero-benefits small{font-size:9px;line-height:1.4;color:#8b8490}
+@media(max-width:760px){.pdf-hero{padding:28px 6% 36px;grid-template-columns:1fr;gap:25px;min-height:0}.pdf-hero-copy{padding:0}.pdf-hero h1{font-size:clamp(44px,12vw,62px);letter-spacing:-2.7px}.pdf-hero .hero-copy>p{font-size:11px}.pdf-hero-product{padding:0 10px 8px}.pdf-product-frame{height:260px;width:min(100%,380px)}.pdf-vape-device{height:225px}.pdf-hero-benefits{margin:0 6% 24px;grid-template-columns:1fr;gap:9px}.pdf-hero-benefits article{padding:13px 15px}.pdf-hero-actions{gap:8px}}
+@media(prefers-reduced-motion:reduce){.pdf-hero-actions .button{transition:none}}
