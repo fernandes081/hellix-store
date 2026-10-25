@@ -1463,3 +1463,26 @@ section.institutional-benefits {
   color:#000 !important;
   -webkit-text-fill-color:#000 !important;
 }
+
+
+/* Harmonização final: contraste branco nas faixas e transição clara após a hero */
+.hero.pdf-hero > .crossed-ticker .ticker-band,
+.hero.pdf-hero > .crossed-ticker .announcement-bar {
+  background:linear-gradient(110deg,#c52ac5 0%,#e653b0 55%,#ff9c69 100%) !important;
+  color:#fff !important;
+}
+.hero.pdf-hero > .crossed-ticker .announcement-group span,
+.hero.pdf-hero > .crossed-ticker .announcement-track,
+.hero.pdf-hero > .crossed-ticker .ticker-band span {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+}
+
+/* Mantém o branco contínuo entre a hero e a seção seguinte */
+.hero.pdf-hero,
+.hero.pdf-hero + .benefits.institutional-benefits {
+  background-color:#fff !important;
+}
+.hero.pdf-hero + .benefits.institutional-benefits {
+  background-image:none !important;
+}
