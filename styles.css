@@ -528,3 +528,95 @@ html,body{
 @media(prefers-reduced-motion:reduce){
   .crossed-ticker .announcement-track{animation:none !important}
 }
+
+
+/* Experiência: cards empilhados verticalmente com seleção animada no hover */
+.institutional-story .story-grid{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+  align-items:stretch !important;
+}
+.institutional-story .story-grid article{
+  position:relative !important;
+  width:100% !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:24px 28px 24px 32px !important;
+  overflow:hidden !important;
+  border:1px solid #eee5f0 !important;
+  border-radius:16px !important;
+  background:linear-gradient(110deg,#fff 0%,#fff 72%,#fbf4fb 100%) !important;
+  box-shadow:0 5px 18px rgba(33,30,39,.045) !important;
+  transform:translateX(0) scale(1) !important;
+  transform-origin:left center !important;
+  transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background .32s ease !important;
+}
+.institutional-story .story-grid article::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:linear-gradient(180deg,#d42ac1,#9d81d8 54%,#efaa7b);
+  opacity:.45;
+  transform:scaleY(.35);
+  transform-origin:center;
+  transition:transform .32s ease,opacity .32s ease;
+}
+.institutional-story .story-grid article>span{
+  display:block;
+  margin-bottom:12px;
+  color:#9d81b1;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.14em;
+  transition:color .32s ease;
+}
+.institutional-story .story-grid article h3{
+  margin:0 0 9px;
+  font-family:Manrope,sans-serif;
+  font-size:clamp(17px,2vw,21px);
+  letter-spacing:-.4px;
+  transition:transform .32s ease,color .32s ease;
+}
+.institutional-story .story-grid article p{
+  max-width:850px;
+  margin:0;
+  color:#77717f;
+  font-size:12px;
+  line-height:1.8;
+  transition:color .32s ease;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .institutional-story .story-grid article:hover{
+    z-index:2;
+    transform:translateX(10px) scale(1.012) !important;
+    border-color:#dfb8e5 !important;
+    background:linear-gradient(110deg,#fff 0%,#fff 55%,#f8eafa 100%) !important;
+    box-shadow:0 16px 32px rgba(88,53,96,.14),-7px 0 20px rgba(157,129,216,.10) !important;
+  }
+  .institutional-story .story-grid article:hover::before{
+    transform:scaleY(1);
+    opacity:1;
+  }
+  .institutional-story .story-grid article:hover h3{
+    transform:translateX(3px);
+    color:#9d58ae;
+  }
+  .institutional-story .story-grid article:hover>span{color:#c52ac5}
+  .institutional-story .story-grid article:hover p{color:#514958}
+}
+@media(max-width:700px){
+  .institutional-story .story-grid{gap:11px !important}
+  .institutional-story .story-grid article{padding:20px 18px 20px 23px !important}
+  .institutional-story .story-grid article p{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .institutional-story .story-grid article,
+  .institutional-story .story-grid article::before,
+  .institutional-story .story-grid article h3,
+  .institutional-story .story-grid article p,
+  .institutional-story .story-grid article>span{transition:none !important}
+}
