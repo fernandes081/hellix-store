@@ -177,6 +177,52 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 }
 
 
+/* Faixa única restaurada: horizontal, sem cruzamento ou sobreposição */
+.crossed-ticker{
+  height:48px;
+  margin:0 0 24px;
+  width:100%;
+  max-width:100%;
+  position:relative;
+  overflow:visible;
+  contain:none;
+  isolation:auto;
+  z-index:1;
+}
+.crossed-ticker .ticker-band{
+  position:relative;
+  inset:auto;
+  left:0;
+  width:100%;
+  height:38px;
+  transform:none;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  box-shadow:0 5px 16px #211e2718;
+}
+.crossed-ticker .ticker-band-one{
+  top:auto;
+  background:linear-gradient(105deg,#d42ac1,#9d81d8 54%,#efaa7b);
+  animation:none;
+}
+.crossed-ticker .ticker-band-two{display:none!important}
+.crossed-ticker .announcement-track{font-size:9px;letter-spacing:1.5px;animation-duration:24s}
+.crossed-ticker .announcement-group{gap:36px;padding-right:36px}
+.crossed-ticker .announcement-group span{gap:36px}
+.crossed-ticker .ticker-band:hover .announcement-track{animation-play-state:paused}
+@media(max-width:700px){
+  .crossed-ticker{height:42px;margin-bottom:18px}
+  .crossed-ticker .ticker-band{height:34px;left:0;width:100%}
+  .crossed-ticker .announcement-track{font-size:8px;letter-spacing:1px}
+  .crossed-ticker .announcement-group,.crossed-ticker .announcement-group span{gap:22px}
+  .crossed-ticker .announcement-group{padding-right:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .crossed-ticker .ticker-band-one{animation:none}
+  .crossed-ticker .announcement-track{animation:none}
+}
 /* Correção definitiva: impedir que as faixas diagonais criem rolagem horizontal */
 html,body{
   width:100%;
