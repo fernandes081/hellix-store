@@ -822,3 +822,34 @@ section.institutional-benefits {
     filter: blur(21px);
   }
 }
+
+
+/* Animação orgânica do halo colorido sob a faixa do catálogo */
+.institutional-banner::before {
+  animation: hellix-banner-halo 5.5s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
+}
+@keyframes hellix-banner-halo {
+  0%, 100% {
+    transform: translateY(0) scaleX(0.94);
+    opacity: 0.78;
+    filter: blur(25px);
+  }
+  50% {
+    transform: translateY(3px) scaleX(1.03);
+    opacity: 1;
+    filter: blur(30px);
+  }
+}
+@media (max-width: 700px) {
+  .institutional-banner::before {
+    animation-duration: 6.5s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .institutional-banner::before {
+    animation: none;
+    transform: none;
+  }
+}
