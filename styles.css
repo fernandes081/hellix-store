@@ -230,3 +230,80 @@ html,body{
   .institutional-benefits .benefit-card,
   .institutional-benefits .benefit-card .benefit-icon{transition:none}
 }
+
+
+/* CTA principal Hellix.co — gradiente da identidade visual e brilho sutil */
+.button-hellix-cta{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  gap:14px;
+  padding:13px 22px 13px 14px;
+  border:1px solid rgba(214,42,193,.22);
+  border-radius:16px;
+  color:#fff;
+  background:linear-gradient(110deg,#c52ac5 0%,#e653b0 55%,#ff9c69 100%);
+  box-shadow:0 7px 20px rgba(197,42,197,.20),0 12px 28px rgba(239,170,123,.13);
+  transition:transform .3s ease,filter .3s ease,box-shadow .3s ease;
+  white-space:nowrap;
+}
+.button-hellix-cta::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-20%;
+  bottom:-20%;
+  left:-45%;
+  width:28%;
+  transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);
+  animation:hellix-cta-shine 3.2s ease-in-out infinite;
+  pointer-events:none;
+}
+.hellix-cta-icon{
+  display:grid;
+  place-items:center;
+  width:29px;
+  height:29px;
+  flex:0 0 29px;
+  border-radius:50%;
+  background:#fff;
+  color:#c52ac5;
+  font-size:18px;
+  transition:transform .35s ease,color .35s ease;
+}
+.hellix-cta-label{position:relative;z-index:1;transition:letter-spacing .3s ease}
+@media(hover:hover){
+  .button-hellix-cta:hover{
+    transform:translateY(-3px);
+    filter:brightness(1.06);
+    box-shadow:0 10px 25px rgba(197,42,197,.28),0 16px 35px rgba(239,170,123,.18);
+  }
+  .button-hellix-cta:hover .hellix-cta-icon{
+    transform:translateX(3px) rotate(45deg);
+    color:#f05ba7;
+  }
+  .button-hellix-cta:hover .hellix-cta-label{letter-spacing:.035em}
+}
+.delivery-actions,.institutional-banner-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+@keyframes hellix-cta-shine{
+  0%,15%{left:-45%;opacity:0}
+  25%{opacity:.8}
+  55%,100%{left:130%;opacity:0}
+}
+@media(max-width:700px){
+  .hero-actions{flex-wrap:wrap}
+  .button-hellix-cta{padding:10px 14px 10px 10px;font-size:9px}
+  .hellix-cta-icon{width:25px;height:25px;flex-basis:25px}
+  .delivery-actions,.institutional-banner-actions{width:100%;align-items:stretch;flex-direction:column}
+  .delivery-actions .button,.institutional-banner-actions .button{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .button-hellix-cta::before{animation:none}
+  .button-hellix-cta,.hellix-cta-icon,.hellix-cta-label{transition:none}
+}
