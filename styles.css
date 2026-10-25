@@ -856,60 +856,100 @@ section.institutional-benefits {
 
 
 
-/* Faixa cruzada com a identidade visual e o conteúdo da faixa institucional original */
+/* Faixas cruzadas animadas: estrutura do código enviado + identidade da faixa institucional Hellix .co */
 .crossed-ribbons {
   position: relative;
   z-index: 20;
   width: 100%;
-  height: 300px;
-  margin: 34px 0 54px;
+  height: clamp(110px, 13vw, 160px);
+  margin: 32px 0 46px;
   isolation: isolate;
   overflow: visible;
 }
 .crossed-ribbon {
   position: absolute;
   left: 50%;
-  width: min(88%, 1120px);
-  min-height: 210px;
-  padding: 30px 5%;
+  width: 112%;
+  height: 66px;
+  padding: 0;
   display: flex;
   align-items: center;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.07);
   background: #25212b;
   color: #fff;
+  box-shadow: 0 4px 38px rgba(0,0,0,.48);
 }
 .crossed-ribbon::before {
   content: "";
   position: absolute;
-  z-index: -1;
-  inset: auto 5% -24px;
-  height: 48px;
+  z-index: 0;
+  inset: auto 4% -27px;
+  height: 35px;
   border-radius: 50%;
-  background: linear-gradient(90deg, rgba(212,42,193,.88), rgba(157,129,216,.82) 38%, rgba(239,170,123,.84) 72%, rgba(232,143,194,.82));
-  filter: blur(26px);
-  opacity: .95;
+  background: linear-gradient(90deg, #d42ac1, #9d81d8 38%, #efaa7b 72%, #e88fc2);
+  filter: blur(25px);
+  opacity: .85;
   pointer-events: none;
-  animation: hellix-banner-halo 5.5s ease-in-out infinite;
 }
-.crossed-ribbon--back { top: 18px; z-index: 1; transform: translateX(-50%) rotate(4deg); }
-.crossed-ribbon--front { top: 18px; z-index: 2; transform: translateX(-50%) rotate(-4deg); }
-.crossed-ribbon__content { position: relative; z-index: 1; width: 100%; }
-.crossed-ribbon .eyebrow { display: inline-block; color: #e9b2dd; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; }
-.crossed-ribbon h2 { font: 800 clamp(28px,4vw,44px)/1.1 Manrope,sans-serif; letter-spacing: -1.8px; margin: 14px 0; }
-.crossed-ribbon h2 span { background: linear-gradient(100deg,#e88fc2,#b99de9,#ffb17f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.crossed-ribbon p { max-width: 650px; font-size: 12px; color: #c7bfcc; line-height: 1.7; margin: 0 0 16px; }
-.crossed-ribbon .institutional-banner-actions { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
-.crossed-ribbon .button { min-height: 38px; padding: 11px 15px; font-size: 10px; }
-.crossed-ribbon--back .institutional-banner-actions { visibility: hidden; }
+.crossed-ribbon--back {
+  top: 16px;
+  z-index: 1;
+  transform: translateX(-50%) rotate(5deg) scale(1.02);
+}
+.crossed-ribbon--front {
+  top: 16px;
+  z-index: 2;
+  transform: translateX(-50%) rotate(-3deg) scale(1.02);
+}
+.crossed-ribbon__track {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: max-content;
+  white-space: nowrap;
+  animation: hellix-ribbon-left 58s linear infinite;
+}
+.crossed-ribbon__track--reverse {
+  animation-name: hellix-ribbon-right;
+  animation-duration: 65s;
+}
+.crossed-ribbon__track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 20px;
+  font: 700 clamp(13px, 1.7vw, 21px)/1.2 Manrope, sans-serif;
+  letter-spacing: .7px;
+}
+.crossed-ribbon__track i {
+  color: #e88fc2;
+  font-style: normal;
+  font-size: 1.05em;
+}
+.crossed-ribbon__track b {
+  font-weight: 800;
+  background: linear-gradient(100deg,#e88fc2,#b99de9,#ffb17f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes hellix-ribbon-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes hellix-ribbon-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
 @media (max-width: 700px) {
-  .crossed-ribbons { height: 290px; margin: 20px 0 34px; }
-  .crossed-ribbon { width: 92%; min-height: 220px; padding: 22px 20px; border-radius: 16px; }
-  .crossed-ribbon--back { top: 22px; transform: translateX(-50%) rotate(3deg); }
-  .crossed-ribbon--front { top: 22px; transform: translateX(-50%) rotate(-3deg); }
-  .crossed-ribbon h2 { font-size: 26px; margin: 9px 0; }
-  .crossed-ribbon p { font-size: 10px; margin-bottom: 10px; }
-  .crossed-ribbon .institutional-banner-actions { gap: 7px; }
-  .crossed-ribbon .button { font-size: 8px; padding: 9px 10px; }
+  .crossed-ribbons { height: 105px; margin: 22px 0 34px; }
+  .crossed-ribbon { height: 48px; width: 125%; }
+  .crossed-ribbon--back, .crossed-ribbon--front { top: 22px; }
+  .crossed-ribbon__track span { gap: 12px; padding-right: 12px; font-size: 12px; letter-spacing: .35px; }
 }
-@media (prefers-reduced-motion: reduce) { .crossed-ribbon::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .crossed-ribbon__track { animation-duration: 120s; }
+}
