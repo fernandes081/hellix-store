@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Check, Menu, ShieldCheck, Sparkles, Smartphone, X } from "lucide-react";
+import ConstellationGrid from "./components/ConstellationGrid";
 
 const features = [
   {
@@ -64,6 +65,7 @@ export default function HomePage() {
       </nav>}
 
       <section id="inicio" className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 pb-24 pt-16 sm:px-8 md:min-h-[690px] md:grid-cols-[1.05fr_.95fr] md:gap-8 md:pb-32 md:pt-20 lg:px-12">
+        <ConstellationGrid />
         <div className="relative z-10">
           <Reveal><div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-xs text-white/65"><span className="h-1.5 w-1.5 rounded-full bg-hellix-pink shadow-[0_0_12px_rgba(240,166,215,.8)]" />Tecnologia, informação e responsabilidade</div></Reveal>
           <Reveal delay={0.08}><h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-6xl lg:text-7xl">A Evolução do <span className="text-gradient">Bem-Estar Consciente.</span></h1></Reveal>
