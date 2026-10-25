@@ -788,3 +788,37 @@ section.institutional-benefits {
     filter: blur(20px);
   }
 }
+
+
+/* Mantém a faixa escura intacta e concentra o halo colorido abaixo dela */
+.institutional-banner {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  box-shadow: none;
+}
+.institutional-banner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: auto 5% -24px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 42, 193, 0.88) 0%,
+    rgba(157, 129, 216, 0.82) 38%,
+    rgba(239, 170, 123, 0.84) 72%,
+    rgba(232, 143, 194, 0.82) 100%
+  );
+  filter: blur(26px);
+  opacity: 0.95;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .institutional-banner::before {
+    inset: auto 4% -18px;
+    height: 38px;
+    filter: blur(21px);
+  }
+}
