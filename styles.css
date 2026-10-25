@@ -163,3 +163,41 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 .experience-card p{font-size:11px;line-height:1.8;color:#aaa5ad;margin:0;max-width:330px}
 @media(max-width:900px){.experience-section{padding:75px 5%}.experience-inner{grid-template-columns:1fr;gap:28px}.experience-intro{position:static;padding:0}.experience-intro p{max-width:600px}.experience-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.experience-section{padding:70px 20px 50px}.experience-intro h2{font-size:30px;letter-spacing:-1px}.experience-cards{grid-template-columns:1fr;gap:13px}.experience-card{min-height:0;padding:25px 23px}.experience-card-top{margin-bottom:20px}.experience-card h3{font-size:18px}}
+
+
+/* Tema escuro unificado Hellix.co */
+:root{color-scheme:dark}
+html,body{background:#080807!important;color:#f7f5f8}
+body{background-color:#080807!important;background-image:none!important}
+.site-header{background:rgba(8,8,7,.88)!important;color:#f7f5f8!important;border-bottom-color:#ffffff16!important}
+.desktop-nav{color:#c3bdc8!important}
+.icon-button,.menu-toggle{color:#f7f5f8!important}
+.cart-button,.search-panel,.search-panel input{background:#141312!important;color:#f7f5f8!important;border-color:#ffffff20!important}
+.hero,.section,.featured-section,.about-section,.delivery-section,.faq-section,.catalog-main,.catalog-section,.products-section,.categories-section,.institutional-hero,.institutional-story,.trust-section,.newsletter{background:#080807!important;color:#f7f5f8!important}
+.hero-copy>p,.section-heading>p,.about-copy>p,.about-points small,.faq-list details p,.catalog-note,.delivery-copy>p{color:#aaa5ad!important}
+.benefits,.institutional-benefits,.category-card,.product-card,.catalog-trust>div,.delivery-visual,.faq-list,.about-points>div{background:#11100f!important;color:#f7f5f8!important;border-color:#ffffff18!important}
+.category-bottom h3,.product-info h3,.benefits strong,.about-points strong,.faq-list summary,.delivery-points strong{color:#f7f5f8!important}
+.category-bottom p,.product-category,.catalog-trust span,.benefits small,.delivery-points small{color:#aaa5ad!important}
+.category-pink,.category-lilac,.category-orange,.category-blue{background:#191617!important}
+.about-section{border-block:1px solid #ffffff10}
+.about-art{background:radial-gradient(circle at 50% 40%,#ffffff12 0,transparent 33%),linear-gradient(145deg,#29202a,#1d1b25 60%,#28201b)!important}
+.button-outline,.filter-pill,.catalog-add{background:#171516!important;color:#f7f5f8!important;border-color:#ffffff24!important}
+.filter-pill.active,.button-dark{background:#f7f5f8!important;color:#080807!important}
+.final-cta{background:#151316!important}
+.site-footer{background:#080807!important;color:#f7f5f8!important}
+.footer-top>div:first-child p,.footer-links a,.footer-bottom{color:#aaa5ad!important}
+.footer-bottom{border-top-color:#ffffff18!important}
+.age-modal,.cart-drawer,.product-modal{background:#141312!important;color:#f7f5f8!important}
+.age-modal p,.age-modal small,.drawer-footer small,.empty-cart,.detail-copy>p:not(.detail-price):not(.detail-disclaimer),.detail-copy ul,.detail-reviews p{color:#aaa5ad!important}
+.drawer-header,.drawer-footer,.cart-row,.detail-reviews{border-color:#ffffff20!important}
+.experience-section{background:#080807!important}
+@media(max-width:900px){
+ .hero,.about-section,.delivery-section{background:#080807!important}
+}
+@media(max-width:700px){
+ .experience-section{padding:60px 18px 45px}
+ .experience-inner{grid-template-columns:minmax(0,1fr);gap:24px}
+ .experience-cards{grid-template-columns:minmax(0,1fr)}
+ .experience-card{width:100%;box-sizing:border-box}
+ .site-header{padding-left:5%;padding-right:5%}
+}
