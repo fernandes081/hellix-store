@@ -1449,3 +1449,17 @@ section.institutional-benefits {
     margin-bottom:138px !important;
   }
 }
+
+
+/* Faixas com o mesmo degradê do destaque da marca; textos pretos */
+.hero.pdf-hero > .crossed-ticker .ticker-band,
+.hero.pdf-hero > .crossed-ticker .announcement-bar {
+  background:linear-gradient(110deg,#c52ac5 0%,#e653b0 55%,#ff9c69 100%) !important;
+  color:#000 !important;
+}
+.hero.pdf-hero > .crossed-ticker .announcement-group span,
+.hero.pdf-hero > .crossed-ticker .announcement-track,
+.hero.pdf-hero > .crossed-ticker .ticker-band span {
+  color:#000 !important;
+  -webkit-text-fill-color:#000 !important;
+}
