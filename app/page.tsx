@@ -39,6 +39,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -74,7 +75,7 @@ export default function HomePage() {
           <div className="absolute h-72 w-72 rounded-full bg-purple-500/15 blur-[90px]" />
           <div className="absolute h-56 w-56 translate-x-16 translate-y-10 rounded-full bg-pink-400/10 blur-[70px]" />
           <div className="glass absolute right-[8%] top-[15%] rounded-2xl px-4 py-3 text-xs text-white/65"><span className="mb-1 block text-[10px] uppercase tracking-[.2em] text-white/35">Precisão</span><span className="text-sm text-white">Design consciente</span></div>
-          <motion.div animate={useReducedMotion() ? undefined : { y: [0, -10, 0], rotate: [7, 8, 7] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 mt-8">
+          <motion.div animate={reduceMotion ? undefined : { y: [0, -10, 0], rotate: [7, 8, 7] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 mt-8">
             <div className="device-cap" /><div className="device-shell"><div className="device-inner"><div className="absolute inset-x-4 top-5 h-px bg-white/20" /><div className="absolute left-1/2 top-20 h-28 w-28 -translate-x-1/2 rounded-full bg-fuchsia-300/10 blur-2xl" /><div className="device-screen">HELLIX</div><div className="absolute bottom-7 left-1/2 h-1 w-12 -translate-x-1/2 rounded-full bg-white/30" /></div></div>
           </motion.div>
           <div className="glass absolute bottom-[12%] left-[4%] rounded-2xl px-4 py-3"><span className="block text-[10px] uppercase tracking-[.2em] text-white/35">HELLIX .CO</span><span className="mt-1 block text-sm">Mais clareza. Mais cuidado.</span></div>
