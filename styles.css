@@ -757,3 +757,34 @@ section[aria-label="Vantagens Hellix.co"] {
 section.institutional-benefits {
   display: none !important;
 }
+
+/* Halo em degradê da identidade Hellix atrás da faixa escura do catálogo */
+.institutional-banner {
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  box-shadow: 0 18px 42px rgba(37, 33, 43, 0.12);
+}
+.institutional-banner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12px -14px;
+  border-radius: 32px;
+  background: linear-gradient(
+    115deg,
+    rgba(212, 42, 193, 0.62) 0%,
+    rgba(157, 129, 216, 0.55) 38%,
+    rgba(239, 170, 123, 0.58) 72%,
+    rgba(232, 143, 194, 0.52) 100%
+  );
+  filter: blur(26px);
+  opacity: 0.78;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .institutional-banner::before {
+    inset: -8px -6px;
+    filter: blur(20px);
+  }
+}
