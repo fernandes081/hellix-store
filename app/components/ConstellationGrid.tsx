@@ -90,7 +90,7 @@ export default function ConstellationGrid() {
     }
 
     function init() {
-      if (disposed) return;
+      if (disposed || !host) return;
       const w = Math.round(host.clientWidth), h = Math.round(host.clientHeight);
       if (w === width && h === height) return;
       width = w; height = h;
