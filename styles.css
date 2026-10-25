@@ -386,12 +386,9 @@ html,body{
   vertical-align:baseline;
 }
 .pdf-hero .texto-gradiente{
-  background:var(--gradiente-texto);
-  background-clip:text;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  box-decoration-break:clone;
-  -webkit-box-decoration-break:clone;
+  color:#111;
+  background:none;
+  -webkit-text-fill-color:#111;
   font-weight:bold;
 }
 .pdf-hero .caixa-destaque::before,
