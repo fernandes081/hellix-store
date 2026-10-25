@@ -1300,3 +1300,101 @@ section.institutional-benefits {
   .hero.pdf-hero > .crossed-ticker .ticker-band-one { top:-19px !important; transform:rotate(-3deg) !important; }
   .hero.pdf-hero > .crossed-ticker .ticker-band-two { top:0 !important; transform:rotate(5deg) !important; }
 }
+
+
+/* REVISÃO DEFINITIVA DO LAYOUT DAS FAIXAS — sobrescreve regras antigas conflitantes */
+.hero.pdf-hero {
+  position:relative !important;
+  overflow:visible !important;
+  margin-bottom:84px !important;
+}
+.hero.pdf-hero > .crossed-ticker {
+  display:block !important;
+  position:absolute !important;
+  inset:auto 0 auto 0 !important;
+  bottom:auto !important;
+  top:calc(100% - 18px) !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  max-width:none !important;
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:visible !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  isolation:isolate !important;
+  z-index:60 !important;
+  pointer-events:none !important;
+}
+.hero.pdf-hero > .crossed-ticker .ticker-band {
+  display:flex !important;
+  position:absolute !important;
+  left:calc(50% - 60vw) !important;
+  width:120vw !important;
+  max-width:none !important;
+  height:40px !important;
+  margin:0 !important;
+  padding:0 0 0 0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:#17151b !important;
+  color:#fff !important;
+  box-shadow:0 4px 24px rgba(0,0,0,.35) !important;
+  animation:none !important;
+  pointer-events:auto !important;
+}
+.hero.pdf-hero > .crossed-ticker .ticker-band-one {
+  display:flex !important;
+  top:-22px !important;
+  z-index:3 !important;
+  transform:rotate(-3deg) !important;
+  transform-origin:center center !important;
+}
+.hero.pdf-hero > .crossed-ticker .ticker-band-two {
+  display:flex !important;
+  top:0 !important;
+  z-index:2 !important;
+  transform:rotate(5deg) !important;
+  transform-origin:center center !important;
+}
+.hero.pdf-hero > .crossed-ticker .announcement-track {
+  display:flex !important;
+  flex:0 0 auto !important;
+  width:max-content !important;
+  min-width:max-content !important;
+  white-space:nowrap !important;
+  animation:hellix-marquee 32s linear infinite !important;
+  will-change:transform !important;
+}
+.hero.pdf-hero > .crossed-ticker .ticker-band-two .announcement-track {
+  animation:hellix-marquee 38s linear infinite reverse !important;
+}
+.hero.pdf-hero > .crossed-ticker .announcement-group {
+  display:flex !important;
+  flex:0 0 auto !important;
+  align-items:center !important;
+  white-space:nowrap !important;
+  gap:28px !important;
+  padding-right:28px !important;
+}
+.hero.pdf-hero > .crossed-ticker .announcement-group span {
+  display:inline-flex !important;
+  flex:0 0 auto !important;
+  align-items:center !important;
+  white-space:nowrap !important;
+  color:#fff !important;
+}
+@media(max-width:700px) {
+  .hero.pdf-hero { margin-bottom:72px !important; }
+  .hero.pdf-hero > .crossed-ticker { top:calc(100% - 12px) !important; }
+  .hero.pdf-hero > .crossed-ticker .ticker-band { width:140vw !important; left:calc(50% - 70vw) !important; height:34px !important; }
+  .hero.pdf-hero > .crossed-ticker .ticker-band-one { top:-18px !important; transform:rotate(-3deg) !important; }
+  .hero.pdf-hero > .crossed-ticker .ticker-band-two { top:0 !important; transform:rotate(5deg) !important; }
+  .hero.pdf-hero > .crossed-ticker .announcement-track { font-size:8px !important; }
+}
