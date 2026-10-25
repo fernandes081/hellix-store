@@ -144,3 +144,29 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
     margin-bottom:22px;
   }
 }
+
+
+/* Animação suave nos três cards de benefícios */
+.institutional-benefits .benefit-card{
+  border-radius:14px;
+  transition:transform .28s ease,background-color .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.institutional-benefits .benefit-card .benefit-icon{
+  transition:transform .3s ease,background-color .3s ease,box-shadow .3s ease;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .institutional-benefits .benefit-card:hover{
+    transform:translateY(-6px);
+    background:#fff;
+    box-shadow:0 12px 26px #6d4a7414;
+  }
+  .institutional-benefits .benefit-card:hover .benefit-icon{
+    transform:scale(1.09) rotate(-6deg);
+    background:#f2d9ed;
+    box-shadow:0 5px 12px #a26caa20;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .institutional-benefits .benefit-card,
+  .institutional-benefits .benefit-card .benefit-icon{transition:none}
+}
