@@ -2,6 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
+type NodePoint = {
+  x: number; y: number; baseX: number; baseY: number;
+  vx: number; vy: number; radius: number; pulse: number; label: string;
+};
+
 export default function ConstellationGrid() {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,71 +14,192 @@ export default function ConstellationGrid() {
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
+    const ctx = canvas?.getContext("2d", { alpha: true });
     if (!host || !canvas || !ctx) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const pointer = { x: 0, y: 0, active: false };
-    let width = 0, height = 0, nodes: { x:number; y:number; bx:number; by:number; vx:number; vy:number; pulse:number; radius:number }[] = [];
-    let frame = 0, visible = true, disposed = false;
-    const spacing = 55, reach = 220, link = 75, step = 1 / 60;
-    let last = 0, elapsed = 0;
-    const resize = () => {
-      width = host.clientWidth; height = host.clientHeight;
+    // Parâmetros equivalentes ao snippet original.
+    const ESPACAMENTO = 55;
+    const RAIO_CURSOR = 220;
+    const FORCA = 1500;
+    const MOLA = 18;
+    const AMORTECIMENTO = 0.82;
+    const CONEXAO = 75;
+    const MOSTRAR_ROTULOS = true;
+    const STEP = 1 / 60;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointer = { x: 0, y: 0, prevX: 0, prevY: 0, active: false };
+    let width = 0, height = 0;
+    let nodes: NodePoint[] = [];
+    let raf = 0, lastTime = 0, accumulator = 0;
+    let visible = true, disposed = false;
+    let pointColor = "255,255,255", accent = "240,166,215";
+    let resizeObserver: ResizeObserver;
+    let intersectionObserver: IntersectionObserver;
+
+    function draw() {
+      if (!ctx || !width || !height) return;
+      ctx.clearRect(0, 0, width, height);
+
+      // Grade espacial para desenhar conexões sem comparar todos os pontos entre si.
+      const cells = new Map<string, number[]>();
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const key = Math.floor(n.x / CONEXAO) + "," + Math.floor(n.y / CONEXAO);
+        if (!cells.has(key)) cells.set(key, []);
+        cells.get(key)!.push(i);
+      }
+
+      ctx.lineWidth = 0.7;
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i], cx = Math.floor(n.x / CONEXAO), cy = Math.floor(n.y / CONEXAO);
+        for (let ox = -1; ox <= 1; ox++) for (let oy = -1; oy <= 1; oy++) {
+          const neighbors = cells.get((cx + ox) + "," + (cy + oy));
+          if (!neighbors) continue;
+          for (const j of neighbors) {
+            if (j <= i) continue;
+            const other = nodes[j], distance = Math.hypot(n.x - other.x, n.y - other.y);
+            if (distance >= CONEXAO) continue;
+            ctx.strokeStyle = "rgba(" + pointColor + "," + ((1 - distance / CONEXAO) * 0.18) + ")";
+            ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(other.x, other.y); ctx.stroke();
+          }
+        }
+      }
+
+      const radius = Math.min(RAIO_CURSOR, width * 0.48, height * 0.48);
+      for (const n of nodes) {
+        const distance = pointer.active ? Math.hypot(pointer.x - n.x, pointer.y - n.y) : Infinity;
+        const near = distance < radius;
+        const alpha = near ? 0.95 : 0.25 + Math.sin(n.pulse) * 0.1;
+        ctx.fillStyle = "rgba(" + (near ? accent : pointColor) + "," + alpha + ")";
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, Math.max(0.5, near ? n.radius * 2.2 : n.radius + Math.sin(n.pulse) * 0.3), 0, Math.PI * 2);
+        ctx.fill();
+
+        // Anéis expansivos e coordenadas surgem junto ao cursor, como no original.
+        if (MOSTRAR_ROTULOS && distance < 90) {
+          const ring = (n.pulse * 20) % 30 + 4;
+          ctx.strokeStyle = "rgba(" + accent + "," + ((1 - ring / 34) * 0.4) + ")";
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(n.x, n.y, ring, 0, Math.PI * 2); ctx.stroke();
+          ctx.font = "8px ui-monospace, SFMono-Regular, Consolas, monospace";
+          ctx.fillStyle = "rgba(" + accent + ",.85)";
+          ctx.fillText(n.label, n.x + 10, n.y - 10);
+        }
+      }
+    }
+
+    function init() {
+      if (disposed) return;
+      const w = Math.round(host.clientWidth), h = Math.round(host.clientHeight);
+      if (w === width && h === height) return;
+      width = w; height = h;
+      if (!w || !h) { stop(); return; }
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const style = getComputedStyle(host.parentElement || host);
+      pointColor = style.getPropertyValue("--cgc-pontos").trim() || "255,255,255";
+      accent = style.getPropertyValue("--cgc-destaque").trim() || "240,166,215";
+      const spacing = Math.max(ESPACAMENTO, Math.sqrt(w * h / 1000));
       nodes = [];
-      const gap = Math.max(spacing, Math.sqrt(width * height / 1000));
-      for (let x = 0; x <= width; x += gap) for (let y = 0; y <= height; y += gap)
-        nodes.push({ x, y, bx:x, by:y, vx:0, vy:0, pulse:Math.random()*6.28, radius:1+Math.random() });
-      draw();
-    };
-    const draw = () => {
-      if (!ctx) return;
-      ctx.fillStyle = "rgba(3,4,7,0)";
-      ctx.clearRect(0,0,width,height);
-      for (let i=0;i<nodes.length;i++) {
-        const a=nodes[i];
-        for(let j=i+1;j<nodes.length;j++) {
-          const b=nodes[j], d=Math.hypot(a.x-b.x,a.y-b.y);
-          if(d<link) { ctx.strokeStyle="rgba(255,255,255,"+((1-d/link)*.17)+")";ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke(); }
+      for (let col = 0; col <= Math.ceil(w / spacing); col++) {
+        for (let row = 0; row <= Math.ceil(h / spacing); row++) {
+          const x = col * spacing, y = row * spacing;
+          nodes.push({
+            x, y, baseX: x, baseY: y, vx: 0, vy: 0,
+            radius: 1.2 + Math.random() * 1.2, pulse: Math.random() * Math.PI * 2,
+            label: (col * 7).toString(16).toUpperCase() + ":" + (row * 11).toString(16).toUpperCase()
+          });
         }
       }
-      for(const n of nodes) {
-        const d=pointer.active?Math.hypot(pointer.x-n.x,pointer.y-n.y):Infinity;
-        const near=d<reach;
-        ctx.fillStyle=near?"rgba(240,166,215,.95)":"rgba(255,255,255,"+(.22+Math.sin(n.pulse)*.08)+")";
-        ctx.beginPath();ctx.arc(n.x,n.y,near?n.radius*2:n.radius,0,Math.PI*2);ctx.fill();
-      }
-    };
-    const tick = (now:number) => {
-      frame=0;
-      if(disposed||!visible||document.hidden||reduceMotion.matches)return;
-      elapsed+=Math.min((now-last)/1000,.05);last=now;
-      while(elapsed>=step) {
-        for(const n of nodes) {
-          n.pulse+=step*3;
-          const dx=pointer.x-n.x,dy=pointer.y-n.y,d=Math.hypot(dx,dy);
-          if(pointer.active&&d>0&&d<reach){const f=(1-d/reach)*24;n.vx-=dx/d*f*step;n.vy-=dy/d*f*step;}
-          n.vx+=(n.bx-n.x)*18*step;n.vy+=(n.by-n.y)*18*step;
-          n.vx*=.82;n.vy*=.82;n.x+=n.vx;n.y+=n.vy;
+      pointer.active = false; accumulator = 0; draw(); start();
+    }
+
+    function move(event: PointerEvent) {
+      if (reduced.matches) return;
+      const rect = host.getBoundingClientRect();
+      const x = (event.clientX - rect.left) * width / rect.width;
+      const y = (event.clientY - rect.top) * height / rect.height;
+      if (!pointer.active) { pointer.prevX = x; pointer.prevY = y; }
+      pointer.x = x; pointer.y = y; pointer.active = true; start();
+    }
+    function leave() { pointer.active = false; }
+    function release(event: PointerEvent) { if (event.pointerType !== "mouse") leave(); }
+
+    function step() {
+      const speed = pointer.active
+        ? Math.min(50, Math.hypot(pointer.x - pointer.prevX, pointer.y - pointer.prevY) / (STEP * 1000))
+        : 0;
+      pointer.prevX = pointer.x; pointer.prevY = pointer.y;
+      const radius = Math.min(RAIO_CURSOR, width * 0.48, height * 0.48);
+      for (const n of nodes) {
+        n.pulse += STEP * 3;
+        const dx = pointer.x - n.x, dy = pointer.y - n.y, distance = Math.hypot(dx, dy);
+        if (pointer.active && distance > 0 && distance < radius) {
+          const force = (1 - distance / radius) * (FORCA + speed * 150);
+          n.vx -= dx / distance * force * STEP;
+          n.vy -= dy / distance * force * STEP;
         }
-        elapsed-=step;
+        n.vx += (n.baseX - n.x) * MOLA * STEP;
+        n.vy += (n.baseY - n.y) * MOLA * STEP;
+        n.vx *= AMORTECIMENTO; n.vy *= AMORTECIMENTO;
+        n.x += n.vx * STEP * 60; n.y += n.vy * STEP * 60;
       }
-      draw();frame=requestAnimationFrame(tick);
-    };
-    const start=()=>{if(!frame&&!disposed&&visible&&!document.hidden&&!reduceMotion.matches){last=performance.now();frame=requestAnimationFrame(tick);}};
-    const move=(e:PointerEvent)=>{const r=host.getBoundingClientRect();pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top;pointer.active=true;start();};
-    const leave=()=>{pointer.active=false;};
-    const visibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else start();};
-    const observer=new ResizeObserver(resize);
-    const intersection=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else{cancelAnimationFrame(frame);frame=0;}});
-    host.addEventListener("pointermove",move,{passive:true});host.addEventListener("pointerleave",leave);
-    document.addEventListener("visibilitychange",visibility);reduceMotion.addEventListener("change",visibility);
-    observer.observe(host);intersection.observe(host);resize();start();
-    return()=>{disposed=true;cancelAnimationFrame(frame);observer.disconnect();intersection.disconnect();host.removeEventListener("pointermove",move);host.removeEventListener("pointerleave",leave);document.removeEventListener("visibilitychange",visibility);reduceMotion.removeEventListener("change",visibility);};
+    }
+
+    function render(now: number) {
+      raf = 0;
+      if (!host.isConnected) { dispose(); return; }
+      if (disposed || !visible || document.hidden || reduced.matches) return;
+      accumulator += Math.min((now - lastTime) / 1000, 0.05); lastTime = now;
+      while (accumulator >= STEP) { step(); accumulator -= STEP; }
+      draw(); raf = requestAnimationFrame(render);
+    }
+    function start() {
+      if (!raf && !disposed && visible && !document.hidden && !reduced.matches && width && height) {
+        lastTime = performance.now(); raf = requestAnimationFrame(render);
+      }
+    }
+    function stop() { cancelAnimationFrame(raf); raf = 0; accumulator = 0; leave(); }
+    function preference() {
+      stop();
+      for (const n of nodes) { n.x = n.baseX; n.y = n.baseY; n.vx = n.vy = 0; }
+      draw(); start();
+    }
+    function visibility() { if (document.hidden) stop(); else start(); }
+    function dispose() {
+      disposed = true; stop(); resizeObserver.disconnect(); intersectionObserver.disconnect();
+      host.removeEventListener("pointermove", move); host.removeEventListener("pointerdown", move);
+      host.removeEventListener("pointerleave", leave); host.removeEventListener("pointercancel", leave);
+      host.removeEventListener("pointerup", release);
+      document.removeEventListener("visibilitychange", visibility);
+      document.removeEventListener("scroll", leave, true);
+      reduced.removeEventListener("change", preference);
+    }
+
+    host.addEventListener("pointermove", move, { passive: true });
+    host.addEventListener("pointerdown", move, { passive: true });
+    host.addEventListener("pointerleave", leave);
+    host.addEventListener("pointercancel", leave);
+    host.addEventListener("pointerup", release);
+    document.addEventListener("visibilitychange", visibility);
+    document.addEventListener("scroll", leave, { passive: true, capture: true });
+    reduced.addEventListener("change", preference);
+    resizeObserver = new ResizeObserver(init);
+    intersectionObserver = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    });
+    resizeObserver.observe(host); intersectionObserver.observe(host); init();
+    if (document.fonts) document.fonts.ready.then(() => { if (host.isConnected) init(); });
+    return dispose;
   }, []);
 
-  return <div ref={hostRef} aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden"><canvas ref={canvasRef} className="absolute inset-0 h-full w-full" /></div>;
+  // Eventos são escutados na própria seção Hero para que a grade não bloqueie botões.
+  return (
+    <div ref={hostRef} aria-hidden="true" className="pointer-events-auto absolute inset-0 z-0 overflow-hidden" style={{ touchAction: "pan-y" }}>
+      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />
+    </div>
+  );
 }
