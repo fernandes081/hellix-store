@@ -186,8 +186,10 @@ html,body{
 .crossed-ticker{
   width:100%;
   max-width:100%;
-  overflow:hidden;
-  contain:paint;
+  overflow:visible;
+  contain:none;
+  position:relative;
+  z-index:9999;
 }
 .crossed-ticker .ticker-band{
   left:-3%;
