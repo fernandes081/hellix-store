@@ -714,3 +714,41 @@ section[aria-label="Vantagens Hellix.co"] {
   width: 100%;
   text-align: center;
 }
+
+
+/* Animação sutil e contínua para todas as palavras com texto em degradê */
+.brand span,
+.hero h1 span,
+.section-heading h2 span,
+.about-copy h2 span,
+.final-cta h2 span,
+.delivery-copy h2 span,
+.subpage-hero h1 span,
+.subpage-heading span,
+.catalog-intro h1 span,
+.institutional-banner h2 span,
+.footer-brand span,
+.title-underline {
+  background-size: 220% 220%;
+  animation: hellix-text-gradient-flow 5s ease-in-out infinite;
+}
+@keyframes hellix-text-gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand span,
+  .hero h1 span,
+  .section-heading h2 span,
+  .about-copy h2 span,
+  .final-cta h2 span,
+  .delivery-copy h2 span,
+  .subpage-hero h1 span,
+  .subpage-heading span,
+  .catalog-intro h1 span,
+  .institutional-banner h2 span,
+  .footer-brand span,
+  .title-underline {
+    animation: none;
+  }
+}
