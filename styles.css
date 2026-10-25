@@ -1398,3 +1398,20 @@ section.institutional-benefits {
   .hero.pdf-hero > .crossed-ticker .ticker-band-two { top:0 !important; transform:rotate(5deg) !important; }
   .hero.pdf-hero > .crossed-ticker .announcement-track { font-size:8px !important; }
 }
+
+
+/* Ajuste fino: manter as faixas abaixo dos botões da hero */
+.hero.pdf-hero > .crossed-ticker {
+  top:calc(100% + 24px) !important;
+}
+.hero.pdf-hero {
+  margin-bottom:126px !important;
+}
+@media(max-width:700px) {
+  .hero.pdf-hero > .crossed-ticker {
+    top:calc(100% + 18px) !important;
+  }
+  .hero.pdf-hero {
+    margin-bottom:108px !important;
+  }
+}
