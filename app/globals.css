@@ -59,3 +59,68 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Camada visual: profundidade e microinterações sem alterar a identidade existente. */
+main { isolation: isolate; }
+.hero-glow { opacity: .95; }
+#inicio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+.glass {
+  position: relative;
+  isolation: isolate;
+  transition: border-color .35s ease, box-shadow .35s ease, background .35s ease;
+}
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(115deg, transparent 15%, rgba(255,255,255,.065) 48%, transparent 78%);
+  transform: translateX(-18%);
+  transition: opacity .35s ease, transform .65s ease;
+  z-index: -1;
+}
+.glass:hover {
+  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 24px 90px rgba(0,0,0,.34), inset 0 1px rgba(255,255,255,.08);
+}
+.glass:hover::before { opacity: 1; transform: translateX(0); }
+.device-shell {
+  filter: drop-shadow(0 24px 35px rgba(167,139,250,.12));
+  transition: filter .45s ease;
+}
+.device-shell:hover { filter: drop-shadow(0 28px 45px rgba(240,166,215,.2)); }
+a, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid #f0a6d7;
+  outline-offset: 4px;
+}
+#diferenciais article { overflow: hidden; }
+#diferenciais article::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 0;
+  height: 1px;
+  opacity: .0;
+  background: linear-gradient(90deg, transparent, rgba(240,166,215,.65), transparent);
+  transition: opacity .3s ease;
+}
+#diferenciais article:hover::after { opacity: 1; }
+#experiencia .glass { box-shadow: 0 30px 100px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.06); }
+@media (max-width: 640px) {
+  #inicio::before { background-size: 42px 42px; opacity: .11; }
+  .glass:hover { transform: none; }
+}
