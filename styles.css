@@ -1432,3 +1432,20 @@ section.institutional-benefits {
     margin-bottom:120px !important;
   }
 }
+
+
+/* Descer novamente as faixas cruzadas */
+.hero.pdf-hero > .crossed-ticker {
+  top:calc(100% + 64px) !important;
+}
+.hero.pdf-hero {
+  margin-bottom:166px !important;
+}
+@media(max-width:700px) {
+  .hero.pdf-hero > .crossed-ticker {
+    top:calc(100% + 48px) !important;
+  }
+  .hero.pdf-hero {
+    margin-bottom:138px !important;
+  }
+}
