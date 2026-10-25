@@ -855,13 +855,13 @@ section.institutional-benefits {
 }
 
 
-/* Faixas vermelhas cruzadas: ficam acima do conteúdo e não são cortadas pelo container */
+/* Duas faixas cruzadas com a identidade escura e o halo colorido da faixa original */
 .crossed-ribbons {
   position: relative;
   z-index: 20;
   width: 100%;
-  height: 132px;
-  margin: 34px 0 46px;
+  height: 150px;
+  margin: 36px 0 48px;
   isolation: isolate;
   overflow: visible !important;
 }
@@ -869,27 +869,43 @@ section.institutional-benefits {
   position: absolute;
   left: 50%;
   width: 112%;
-  min-height: 66px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   overflow: hidden;
   padding: 18px 0;
-  background: linear-gradient(270deg, #F90000 0%, #D00026 100%);
-  box-shadow: 0 4px 38px rgba(0, 0, 0, .48);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  background: linear-gradient(115deg, #17131b 0%, #0e0c11 55%, #1a1119 100%);
   color: #fff;
   white-space: nowrap;
+  box-shadow: 0 10px 34px rgba(0,0,0,.38), 0 0 28px rgba(212,42,193,.18);
+}
+.crossed-ribbon::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: auto 7% -17px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(212,42,193,.9), rgba(157,129,216,.85) 38%, rgba(239,170,123,.85) 72%, rgba(232,143,194,.88));
+  filter: blur(18px);
+  pointer-events: none;
 }
 .crossed-ribbon--back {
-  top: 11px;
+  top: 13px;
   z-index: 1;
   transform: translateX(-50%) rotate(3deg) scale(1.02);
 }
 .crossed-ribbon--front {
-  top: 11px;
+  top: 13px;
   z-index: 2;
   transform: translateX(-50%) rotate(-3deg) scale(1.02);
+  border-color: rgba(232,143,194,.24);
 }
 .crossed-ribbon__track {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: 0 0 auto;
   width: max-content;
@@ -902,11 +918,10 @@ section.institutional-benefits {
 .crossed-ribbon__track span {
   flex: 0 0 auto;
   font-family: "Clash Display", "Arial Narrow", Arial, sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(17px, 1.8vw, 22px);
   font-weight: 600;
-  letter-spacing: .4px;
-  line-height: 1.2;
-  padding-right: 0;
+  letter-spacing: .35px;
+  line-height: 1.25;
 }
 @keyframes hellix-ribbon-scroll {
   from { transform: translateX(0); }
@@ -917,18 +932,9 @@ section.institutional-benefits {
   to { transform: translateX(0); }
 }
 @media (max-width: 700px) {
-  .crossed-ribbons {
-    height: 105px;
-    margin: 24px 0 34px;
-  }
-  .crossed-ribbon {
-    width: 125%;
-    min-height: 54px;
-    padding: 14px 0;
-  }
-  .crossed-ribbon__track span {
-    font-size: 18px;
-  }
+  .crossed-ribbons { height: 118px; margin: 26px 0 36px; }
+  .crossed-ribbon { width: 125%; min-height: 58px; padding: 14px 0; border-radius: 8px; }
+  .crossed-ribbon__track span { font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .crossed-ribbon__track { animation: none; }
