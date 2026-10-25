@@ -953,3 +953,77 @@ section.institutional-benefits {
 @media (prefers-reduced-motion: reduce) {
   .crossed-ribbon__track { animation-duration: 120s; }
 }
+
+
+/* Ajuste definitivo: faixas cruzadas ficam somente junto à hero; card institucional inferior preservado */
+.crossed-ticker {
+  height: 94px !important;
+  position: relative !important;
+  overflow: visible !important;
+  isolation: isolate !important;
+  z-index: 5 !important;
+  margin: 0 0 28px !important;
+  width: 100% !important;
+  background: transparent !important;
+}
+.crossed-ticker .ticker-band {
+  position: absolute !important;
+  left: -8% !important;
+  width: 116% !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  background: #25212b !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 0 4px 38px rgba(0,0,0,.48) !important;
+}
+.crossed-ticker .ticker-band-one {
+  display: flex !important;
+  top: 10px !important;
+  z-index: 3 !important;
+  transform: rotate(-3deg) !important;
+  background: #25212b !important;
+  animation: none !important;
+}
+.crossed-ticker .ticker-band-two {
+  display: flex !important;
+  top: 24px !important;
+  z-index: 2 !important;
+  transform: rotate(5deg) !important;
+  background: #25212b !important;
+  animation: none !important;
+}
+.crossed-ticker .announcement-track {
+  display: flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  white-space: nowrap !important;
+  will-change: transform;
+  animation: hellix-marquee 32s linear infinite !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.3px !important;
+}
+.crossed-ticker .ticker-band-two .announcement-track {
+  animation-direction: reverse !important;
+  animation-duration: 38s !important;
+}
+.crossed-ticker .announcement-group { display:flex !important; align-items:center !important; gap:28px !important; padding-right:28px !important; }
+.crossed-ticker .announcement-group span { display:inline-flex !important; align-items:center !important; gap:28px !important; color:#fff !important; }
+.crossed-ticker .announcement-group span:first-child { color:#e9b2dd !important; }
+@media(max-width:700px) {
+  .crossed-ticker { height:78px !important; margin:0 0 22px !important; }
+  .crossed-ticker .ticker-band { left:-12% !important; width:124% !important; height:34px !important; }
+  .crossed-ticker .ticker-band-one { top:12px !important; transform:rotate(-3deg) !important; }
+  .crossed-ticker .ticker-band-two { display:flex !important; top:26px !important; transform:rotate(5deg) !important; }
+  .crossed-ticker .announcement-track { font-size:8px !important; letter-spacing:1px !important; }
+  .crossed-ticker .announcement-group,.crossed-ticker .announcement-group span { gap:18px !important; }
+  .crossed-ticker .announcement-group { padding-right:18px !important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .crossed-ticker .announcement-track { animation-duration:120s !important; }
+}
