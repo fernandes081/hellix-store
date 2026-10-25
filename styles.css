@@ -1415,3 +1415,20 @@ section.institutional-benefits {
     margin-bottom:108px !important;
   }
 }
+
+
+/* Pequeno ajuste adicional: descer mais as duas faixas */
+.hero.pdf-hero > .crossed-ticker {
+  top:calc(100% + 42px) !important;
+}
+.hero.pdf-hero {
+  margin-bottom:144px !important;
+}
+@media(max-width:700px) {
+  .hero.pdf-hero > .crossed-ticker {
+    top:calc(100% + 32px) !important;
+  }
+  .hero.pdf-hero {
+    margin-bottom:120px !important;
+  }
+}
