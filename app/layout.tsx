@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Hellix .co — Bem-estar consciente",
   description: "Informação clara sobre bem-estar, procedência e uso responsável, respeitando as regras aplicáveis em cada localidade.",
   applicationName: "Hellix .co",
+  icons: { icon: "/generated.jpeg", shortcut: "/generated.jpeg", apple: "/generated.jpeg" },
   metadataBase: new URL("https://hellix-store.vercel.app"),
   openGraph: {
     title: "Hellix .co — Bem-estar consciente",
