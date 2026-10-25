@@ -121,12 +121,17 @@ body{background:var(--paper);font-family:'DM Sans',Arial,sans-serif;color:var(--
 @media(prefers-reduced-motion:reduce){.crossed-ticker .ticker-band-one,.crossed-ticker .ticker-band-two{animation:none}.crossed-ticker .announcement-track{animation:none}}
 
 
-/* Corrige o espaço entre as faixas diagonais e os três cards de benefícios */
+/* Mantém as faixas diagonais por cima das secções seguintes, sem cortar as extremidades */
 .crossed-ticker{
   height:118px;
   margin-bottom:20px;
-  z-index:2;
+  position:relative;
+  z-index:9999;
+  isolation:isolate;
+  overflow:visible;
 }
+.crossed-ticker .ticker-band-one{z-index:3}
+.crossed-ticker .ticker-band-two{z-index:2}
 .institutional-benefits{
   position:relative;
   z-index:1;
