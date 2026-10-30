@@ -10,20 +10,20 @@ module.exports = {
           elevated: "#17171b",
           white: "#f7f7f8",
           muted: "#a1a1aa",
-          pink: "#f0a6d7",
-          purple: "#a78bfa",
-          orange: "#fb923c",
+          pink: "#ec087f",
+          purple: "#8b2cff",
+          orange: "#ff762f",
           border: "rgba(255,255,255,0.11)"
         }
       },
       fontFamily: { sans: ["Inter", "Geist", "Arial", "sans-serif"] },
       boxShadow: {
-        glow: "0 0 80px rgba(192,132,252,0.13)",
+        glow: "0 0 80px rgba(139,44,255,0.16)",
         card: "0 20px 80px rgba(0,0,0,0.35)"
       },
       backgroundImage: {
-        "hero-radial": "radial-gradient(ellipse at 50% 0%, rgba(168,85,247,.18), transparent 58%)",
-        "pink-radial": "radial-gradient(ellipse at 80% 40%, rgba(236,72,153,.12), transparent 45%)"
+        "hero-radial": "radial-gradient(ellipse at 24% 12%, rgba(255,61,54,.16), transparent 48%), radial-gradient(ellipse at 78% 22%, rgba(255,216,74,.12), transparent 42%)",
+        "pink-radial": "radial-gradient(ellipse at 55% 72%, rgba(139,44,255,.16), transparent 48%)"
       },
       keyframes: {
         float: { "0%, 100%": { transform: "translateY(0px)" }, "50%": { transform: "translateY(-10px)" } },
