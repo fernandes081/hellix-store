@@ -96,7 +96,7 @@ export default function ConstellationGrid() {
       width = w; height = h;
       if (!w || !h) { stop(); return; }
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      canvas!.width = Math.round(w * dpr); canvas!.height = Math.round(h * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       const style = getComputedStyle(host.parentElement || host);
       pointColor = style.getPropertyValue("--cgc-pontos").trim() || "255,255,255";
