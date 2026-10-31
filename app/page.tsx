@@ -55,13 +55,14 @@ export default function HomePage() {
           <a className="transition hover:text-white" href="#diferenciais">Diferenciais</a>
           <a className="transition hover:text-white" href="#experiencia">Experiência</a>
           <a className="transition hover:text-white" href="#responsabilidade">Responsabilidade</a>
+          <a className="transition hover:text-white" href="/catalogo">Catálogo</a>
         </nav>
-        <a href="#responsabilidade" className="hidden rounded-full border border-white/15 bg-white/[0.06] px-5 py-2.5 text-sm transition hover:bg-white/10 md:inline-flex">Conheça a Hellix <ArrowUpRight className="ml-2 h-4 w-4" /></a>
+        <div className="hidden items-center gap-3 md:flex"><a href="/catalogo" className="rounded-full border border-hellix-pink/40 bg-hellix-pink/10 px-5 py-2.5 text-sm text-white transition hover:bg-hellix-pink/20">Catálogo</a><a href="#responsabilidade" className="inline-flex rounded-full border border-white/15 bg-white/[0.06] px-5 py-2.5 text-sm transition hover:bg-white/10">Conheça a Hellix <ArrowUpRight className="ml-2 h-4 w-4" /></a></div>
         <button type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} className="rounded-xl border border-white/15 p-2 md:hidden">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
       </header>
 
       {menuOpen && <nav className="relative z-20 mx-5 mb-3 grid gap-1 rounded-2xl border border-white/10 bg-black/90 p-3 backdrop-blur-xl md:hidden">
-        {[["Diferenciais", "#diferenciais"], ["Experiência", "#experiencia"], ["Responsabilidade", "#responsabilidade"]].map(([label, href]) => <a key={href} onClick={closeMenu} href={href} className="rounded-xl px-4 py-3 text-sm text-white/75 hover:bg-white/5">{label}</a>)}
+        {[["Diferenciais", "#diferenciais"], ["Experiência", "#experiencia"], ["Responsabilidade", "#responsabilidade"], ["Catálogo", "/catalogo"]].map(([label, href]) => <a key={href} onClick={closeMenu} href={href} className="rounded-xl px-4 py-3 text-sm text-white/75 hover:bg-white/5">{label}</a>)}
       </nav>}
 
       <section id="inicio" className="relative mx-auto grid max-w-7xl items-center gap-16 px-5 pb-24 pt-16 sm:px-8 md:min-h-[690px] md:grid-cols-[1.05fr_.95fr] md:gap-8 md:pb-32 md:pt-20 lg:px-12">
