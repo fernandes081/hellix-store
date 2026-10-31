@@ -150,7 +150,7 @@ export default function ConstellationGrid() {
 
     function render(now: number) {
       raf = 0;
-      if (!host.isConnected) { dispose(); return; }
+      if (!host || !host.isConnected) { dispose(); return; }
       if (disposed || !visible || document.hidden || reduced.matches) return;
       accumulator += Math.min((now - lastTime) / 1000, 0.05); lastTime = now;
       while (accumulator >= STEP) { step(); accumulator -= STEP; }
