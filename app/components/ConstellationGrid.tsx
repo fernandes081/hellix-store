@@ -117,7 +117,7 @@ export default function ConstellationGrid() {
     }
 
     function move(event: PointerEvent) {
-      if (reduced.matches) return;
+      if (!host || reduced.matches) return;
       const rect = host.getBoundingClientRect();
       const x = (event.clientX - rect.left) * width / rect.width;
       const y = (event.clientY - rect.top) * height / rect.height;
